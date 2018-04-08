@@ -44,7 +44,7 @@ def crawl_page(zipcode, page_num, verbose=False):
         page_url = get_yelp_page(zipcode, page_num)
         soup = BeautifulSoup(urllib2.urlopen(page_url).read())
     except Exception, e:
-        print str(e)
+        print(str(e))
         return []
 
     restaurants = soup.findAll('div', attrs={'class':re.compile
@@ -54,7 +54,7 @@ def crawl_page(zipcode, page_num, verbose=False):
     except AssertionError, e:
         # We make a dangerous assumption that yelp has 10 listing per page,
         # however this can also be a formatting issue, so watch out
-        print 'we have hit the end of the zip code', str(e)
+        print('we have hit the end of the zip code', str(e))
         # False is a special flag, returned when quitting
         return [], False
 
